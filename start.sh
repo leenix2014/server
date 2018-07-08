@@ -1,0 +1,1 @@
+nohup java -cp "./lib/*" game.connector.Server

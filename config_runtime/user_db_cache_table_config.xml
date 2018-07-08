@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tables>
+    <!-- 
+        name: [String] database table name. Required.
+        class: [String] Java class mapping to a table. Default: "T" + name.capitalize()
+        namespace: [String] class namespace.
+        category: [String] full -Whole table cached and never timeout.
+                       lazy -Layz+LFU cache category
+                       none -no cache at all.(Caution: efficiency concerns)
+                       Default: lazy
+        ## The following attributes are used in lazy-category only.
+        maxElementsInMemory: [int]
+        eternal: [boolean] never timeout. Defualt: false
+        overflowToDisk: [boolean]
+        timeToIdleSeconds: [int]
+        timeToLiveSeconds: [int]
+        diskPersistent: [boolean]
+        diskExpiryThreadIntervalSeconds:[int]
+        memoryStoreEvictionPolicy:[String]
+     -->
+     <table name="AGENT" class="Agent" id="ID" index="ID"/>
+     <table name="USERS" class="TUsers" id="ID" index="LOGIN_ID" category="none" />
+     <table name="COMMON_CONFIG" class="TCommonConfig" id="ID" index="ID" category="none"/>
+     <table name="LOGIN_CONFIG" class="TLoginConfig" id="ID" index="ID" category="none"/>
+     <table name="LOGIN_RECORD" class="TLoginRecord" id="ID" index="ID" />
+     <table name="TASK_CONFIG" class="TTaskConfig" id="ID" index="ID" category="none"/>
+     <table name="TASK_RECORD" class="TTaskRecord" id="ID" index="ID"/>
+     <table name="ROOM_CONFIG" class="TRoomConfig" id="ID" index="ID"/>
+     <table name="ROOM_INNINGS" class="TRoomInnings" id="ID" index="ID"/>
+     <table name="APP_VERSION" class="AppVersion" id="ID" index="ID" category="none"/>
+     <table name="USER_DRAW_COUNT" class="UserDrawCount" id="ID" index="ID"/>
+     <table name="PRIZE_CONFIG" class="PrizeConfig" id="ID" index="ID" category="none"/>
+     <table name="PRIZE_RECORD" class="PrizeRecord" id="ID" index="ID"/>
+     <table name="ROOM_CARD_BILL" class="RoomCardBill" id="ID" index="ID"/>
+     <table name="COIN_BILL" class="CoinBill" id="ID" index="ID"/>
+     <table name="TRANSFER" class="Transfer" id="ID" index="ID"/>
+     <table name="SHOP_ORDER" class="ShopOrder" id="ID" index="ORDER_ID"/>
+     <table name="SHOP_GOOD" class="ShopGood" id="ID" index="GOOD_ID"/>
+     <table name="ANCHOR" class="Anchor" id="ID" index="ANCHOR_ID"/>
+     <table name="ANCHOR_MACHINE" class="AnchorMachine" id="ID" index="ANCHOR_ID"/>
+     <table name="ANCHOR_BILL" class="AnchorBill" id="ID" index="ID"/>
+     <table name="LIVE_ROOM" class="LiveRoom" id="ID" index="ID"/>
+     <table name="LIVE_GIFT" class="LiveGift" id="ID" index="GIFT_ID" category="none"/>
+     <table name="LIVE_SEND_MSG" class="LiveSendMsg" id="ID" index="ID"/>
+     <table name="LIVE_SEND_GIFT" class="LiveSendGift" id="ID" index="ID"/>
+     <table name="LIVE_WORDS" class="LiveWord" id="ID" index="ID" category="none"/>
+     <table name="LIVE_NAMES" class="LiveName" id="ID" index="ID" category="none"/>
+     <table name="ROULETTE_ROOM" class="RouletteRoom" id="ID" index="ROOM_ID" category="none"/>
+     <table name="ROULETTE" class="Roulette" id="ID" index="ID"/>
+     <table name="ROULETTE_BET" class="RouletteBet" id="ID" index="ID"/>
+     <table name="ROULETTE_BET_SUM" class="RouletteBetSum" id="ID" index="ID"/>
+     <table name="BACCARAT_ROOM" class="BaccaratRoom" id="ID" index="ROOM_ID" category="none"/>
+     <table name="BACCARAT" class="Baccarat" id="ID" index="ID"/>
+     <table name="BACCARAT_BET" class="BaccaratBet" id="ID" index="ID"/>
+     <table name="BACCARAT_WAYBILL" class="BaccaratWaybill" id="ID" index="ID"/>
+     <table name="COIN_ROOM" class="CoinRoom" id="ID" index="ROOM_ID" category="none"/>
+     <table name="COIN_ROOM_HISTORY" class="CoinRoomHistory" id="ID" index="ID" category="none"/>
+</tables>

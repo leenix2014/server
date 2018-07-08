@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="pokerking" basedir="." default="test">
+	<property file="build.properties"/>
+	<property name="jar" value="pokerking.jar"/>
+	<property name="src" value="${project}/src"/>
+	<property name="lib" value="${project}/lib"/>
+		
+	<path id="compile.classpath">
+		<fileset dir="${lib}">
+			<exclude name="junit*.jar"/>
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="init">
+		<mkdir dir="dest"/>
+		<mkdir dir="bin"/>
+	</target>
+	
+	<target name="clean">
+		<delete dir="dest"/>
+	</target>
+	
+	<target name="build" depends="init">
+		<javac encoding="UTF-8" debug="true" srcdir="${src}" destdir="bin" includeAntRuntime="false">
+			<classpath refid="compile.classpath"/>
+		</javac>
+		<mkdir dir="dest/lib"/>
+		<delete file="dest/lib/${jar}"/>
+		<jar jarfile="dest/lib/${jar}" basedir="bin" manifest="src/META-INF/MANIFEST.MF"/>
+		<copy todir="dest/config_runtime" overwrite="true">
+			<fileset dir="${project}/config_runtime">
+				<include name="*"/>
+			</fileset>
+		</copy>
+		<copy todir="dest/config_deploy" overwrite="true">
+			<fileset dir="${project}/config_deploy">
+				<include name="*"/>
+			</fileset>
+		</copy>
+		<copy todir="dest" overwrite="true">
+			<fileset dir="${project}">
+				<include name="*.properties"/>
+				<include name="start.*"/>
+				<exclude name="build.*"/>
+				<exclude name="*.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="dest/lib" overwrite="true">
+			<fileset dir="${lib}">
+				<include name="*.jar"/>
+				<exclude name="junit*.jar"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copytosvn" depends="build">
+		<property name="svnpath" value="${param}"/>
+		<mkdir dir="${svnpath}"/>
+		<copy todir="${svnpath}" overwrite="true">
+			<fileset dir="dest">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="test">
+		<antcall target="copytosvn">
+			<param name="svnpath" value="deploy"/>
+		</antcall>
+	</target>
+</project>

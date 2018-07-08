@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mozat-db version="1.0.0" author="mahanzhou@mozat.com">
+
+    <!-- database connection settings -->
+    <db>
+        <url>jdbc:mysql://localhost:3306/poker</url>
+        <dbname>poker</dbname>
+        <username>poker</username>
+        <password>Hongxin123x</password>
+        <driver>com.mysql.jdbc.Driver</driver>
+    </db>
+    
+    <!-- connection pool settings. BoneCP is used -->
+    <connection-pool>
+        <!-- BoneCP partition Count. An integer for manual setting. 
+            When set to auto, CPU cores num is used. -->
+        <partitionCount>auto</partitionCount>
+        
+        <maxConnectionsPerPartition>20</maxConnectionsPerPartition>
+        <minConnectionsPerPartition>5</minConnectionsPerPartition>
+        <connectionTimeout>60</connectionTimeout>
+        <acquireIncrement>1</acquireIncrement>
+        <idleConnectionTestPeriodInSeconds>60</idleConnectionTestPeriodInSeconds>
+    </connection-pool>
+    
+    <!-- table dirs and default cache settings -->
+    <cache-config>
+		<defualt-settings>
+		    <namespace>com.mozat.morange.dbcache.tables</namespace>
+		    <category>lazy</category>
+		    <maxElementsInMemory>10000</maxElementsInMemory>
+		    <eternal>false</eternal>
+		    <overflowToDisk>false</overflowToDisk>
+		    <timeToIdleSeconds>1800</timeToIdleSeconds>
+		    <timeToLiveSeconds>0</timeToLiveSeconds>
+		    <diskPersistent>false</diskPersistent>
+		    <diskExpiryThreadIntervalSeconds>60</diskExpiryThreadIntervalSeconds>
+		    <memoryStoreEvictionPolicy>LFU</memoryStoreEvictionPolicy>
+		</defualt-settings>
+		
+		<table-config-urls>
+		    <url>config_runtime/user_db_cache_table_config.xml</url>
+		</table-config-urls>
+    </cache-config>
+</mozat-db>

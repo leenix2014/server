@@ -1,0 +1,20 @@
+Buildfile: E:\work\pokerface\GameServer\build.xml
+
+test:
+
+init:
+
+build:
+    [javac] Compiling 8 source files to E:\work\pokerface\GameServer\bin
+   [delete] Deleting: E:\work\pokerface\GameServer\dest\invader.jar
+      [jar] Building jar: E:\work\pokerface\GameServer\dest\invader.jar
+     [copy] Copying 454 files to E:\work\pokerface\GameServer\dest\conf
+     [copy] Copying 12 files to E:\work\pokerface\GameServer\dest\config_runtime
+     [copy] Copying 9 files to E:\work\pokerface\GameServer\dest\config_deploy
+     [copy] Copying 49 files to E:\work\pokerface\GameServer\dest
+
+copytosvn:
+     [copy] Copying 525 files to E:\work\pokerface\GameServer\deploy
+
+BUILD SUCCESSFUL
+Total time: 5 seconds
